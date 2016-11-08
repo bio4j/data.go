@@ -1,0 +1,1 @@
+First release. The ADT represents a a GO graph, including all terms and relationships between them. There is an implementation backed from an in-memory XML tree conformant with the obo-xml format.
