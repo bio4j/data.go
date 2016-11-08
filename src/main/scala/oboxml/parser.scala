@@ -33,8 +33,8 @@ case class XmlTerm(val xml: Node) extends AnyVal with AnyTerm {
   def name: String =
     (xml \ "name").head.text
 
-  def comments: String =
-    (xml \ "comment").head.text
+  def comments: Seq[String] =
+    (xml \ "comment") map { _.text }
 
   def namespace: String =
     (xml \ "namespace").head.text

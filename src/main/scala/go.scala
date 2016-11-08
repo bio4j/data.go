@@ -18,7 +18,7 @@ trait AnyTerm extends Any {
   def name: String
   def definition: String
   def namespace: String // TODO finite known set of namespaces
-  def comments: String
+  def comments: Seq[String]
 }
 
 sealed trait AnyRel {
