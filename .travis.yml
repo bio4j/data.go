@@ -1,0 +1,25 @@
+language: scala
+scala:
+- 2.11.8
+jdk:
+- oraclejdk8
+script:
+- sbt ++$TRAVIS_SCALA_VERSION compile coverage test coverageReport codacyCoverage
+- find $HOME/.sbt -name "*.lock" | xargs rm
+- find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+matrix:
+  fast_finish: true
+notifications:
+  email: false
+  webhooks: 
+sudo: false
+cache:
+  directories:
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/boot/"
+branches:
+  only:
+  - master
+env:
+  global:
+    secure: Kewq36IRlBqutwrSiJetYoxJjM0mAhA0ixrUo7PjQnRxWqlPLlPo/PBuJTZkCY9iPNoGWczDAzmA6UqKvjj4ShE8jXlh4qfgKZQq5q7gGQQUlfh5TAjhBtxOTFu7x9ufoLAXqjwVaaN8LcETu6zYZTEtVoB5Q8VOsl+2pnoPjkjuB8ih/TNNfDB6vXjj0PJKkrTf/pBENFLnFjOCDL4j180NENI62V/CP4ey7pm+hSDwBL6N0kivIGq9TxOzO93UOgdOevB53vfjtViWnWxaiE64nr5sdXP+kSqSSng1xjI70pmBePJsz47R8fWg/t5IdZpB+B2pX/8nidXKrOFSTL3q8CbXBwlC8XXq4mk4XnUlt04Or31DNhocoYQ99EonXsVxC5BgWI5E+dXqvjhQtfGlR8wY751ZIaYnEYNjqfhvY2lKkvuWWDwx0DP+3HHRKznFKII3zxKVts7jz3Ag682WH6pOK23Z9gWUXutH00V9Fifc1b1MDxzB69vOvNWp2/4ixSvW5FdS1zdrG9XZC7oHLRlJDKnnRyNOn11hN8a8oljQQfca0bC6yOUdoyBIFtR/HARuNvcPMUcOGYEQGUBQr3jnfHiRGEFOGm0b4coSTFov7m39+AeOX082NIFUF+rs1Utl1Swk3t3BLFqsrut9bZd+peUHYubVSc1yS6Y=
