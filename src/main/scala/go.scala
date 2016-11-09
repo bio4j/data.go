@@ -28,7 +28,7 @@ trait AnyTerm extends Any {
   - http://geneontology.org/page/ontology-structure#essential
 */
 sealed trait Namespace
-case object cellullar_component extends Namespace
+case object cellular_component extends Namespace
 case object molecular_function extends Namespace
 case object biological_process extends Namespace
 

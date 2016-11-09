@@ -72,12 +72,15 @@ case class XmlTerm(val xml: Node) extends AnyVal with AnyTerm {
 
 case object XmlTerm {
 
-  def namespaceFrom(rep: String): Namespace =
+  def namespaceFrom(rep: String): Namespace = {
+    println { rep };
     rep match {
-      case "cellullar_component" => cellullar_component
+      case "cellular_component" => cellular_component
       case "molecular_function" => molecular_function
       case "biological_process" => biological_process
     }
+  }
+
 }
 
 case class Rel(sourceID: String, targetID: String)
