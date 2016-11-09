@@ -1,0 +1,1 @@
+This release adds a Namespace type with the three possible values. See #4.
