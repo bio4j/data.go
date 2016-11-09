@@ -7,7 +7,7 @@ import scala.compat.java8.OptionConverters._
 case class GOOBOXML(xml: Elem) extends AnyVal with AnyGO {
 
   def terms: Seq[XmlTerm] =
-    (xml \ "term").filter( term => (term \ "isObsolete").isEmpty ) map XmlTerm
+    (xml \ "term").filter( term => (term \ "isObsolete").isEmpty ) map { XmlTerm(_) }
 
   def isA: Seq[IsA] =
     terms flatMap { _.isA }
@@ -36,8 +36,8 @@ case class XmlTerm(val xml: Node) extends AnyVal with AnyTerm {
   def comments: Seq[String] =
     (xml \ "comment") map { _.text }
 
-  def namespace: String =
-    (xml \ "namespace").head.text
+  def namespace: Namespace =
+    XmlTerm namespaceFrom (xml \ "namespace").head.text
 
   def definition: String =
     (xml \ "def" \ "defstr").head.text
@@ -68,6 +68,19 @@ case class XmlTerm(val xml: Node) extends AnyVal with AnyTerm {
     (xml \ "relationship")
       .filter( relationshipIs(name) )
       .map( relFromRelationship )
+}
+
+case object XmlTerm {
+
+  def namespaceFrom(rep: String): Namespace = {
+    println { rep };
+    rep match {
+      case "cellular_component" => cellular_component
+      case "molecular_function" => molecular_function
+      case "biological_process" => biological_process
+    }
+  }
+
 }
 
 case class Rel(sourceID: String, targetID: String)
