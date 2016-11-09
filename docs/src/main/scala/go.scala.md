@@ -19,9 +19,23 @@ trait AnyTerm extends Any {
   def ID: String
   def name: String
   def definition: String
-  def namespace: String // TODO finite known set of namespaces
+  def namespace: Namespace
   def comments: Seq[String]
 }
+```
+
+
+See:
+
+- http://geneontology.org/page/ontology-structure#oneorthree
+- http://geneontology.org/page/ontology-structure#essential
+
+
+```scala
+sealed trait Namespace
+case object cellular_component extends Namespace
+case object molecular_function extends Namespace
+case object biological_process extends Namespace
 
 sealed trait AnyRel {
 
