@@ -21,6 +21,12 @@ trait AnyTerm extends Any {
   def comments: Seq[String]
 }
 
+/*
+  See:
+
+  - http://geneontology.org/page/ontology-structure#oneorthree
+  - http://geneontology.org/page/ontology-structure#essential
+*/
 sealed trait Namespace
 case object cellullar_component extends Namespace
 case object molecular_function extends Namespace
