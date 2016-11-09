@@ -17,7 +17,7 @@ trait AnyTerm extends Any {
   def ID: String
   def name: String
   def definition: String
-  def namespace: String // TODO finite known set of namespaces
+  def namespace: Namespace
   def comments: Seq[String]
 }
 
