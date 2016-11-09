@@ -21,6 +21,11 @@ trait AnyTerm extends Any {
   def comments: Seq[String]
 }
 
+sealed trait Namespace
+case object cellullar_component extends Namespace
+case object molecular_function extends Namespace
+case object biological_process extends Namespace
+
 sealed trait AnyRel {
 
   def sourceID: String
